@@ -1,81 +1,141 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transparent Login Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Application Form</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
     body {
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center/cover;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       padding: 20px;
+      margin: 0;
     }
 
-    .login-box {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 30px 25px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    .form-container {
+      background: white;
+      padding: 30px 20px;
       width: 100%;
       max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-sizing: border-box;
     }
 
-    .login-box h2 {
+    .form-container h2 {
       text-align: center;
-      color: #fff;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      text-align: center;
       margin-bottom: 20px;
     }
 
-    .login-box input[type="text"],
-    .login-box input[type="tel"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      font-size: 16px;
+    .logo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
     }
 
-    .login-box button {
+    .btn {
       width: 100%;
+      margin-top: 20px;
       padding: 12px;
-      background-color: #2196f3;
-      border: none;
+      background-color: #2c7be5;
       color: white;
-      font-weight: bold;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      transition: 0.3s;
     }
 
-    .login-box button:hover {
-      background-color: #1976d2;
+    .btn:hover {
+      background-color: #1a5ecc;
     }
 
-    ::placeholder {
-      color: #ccc;
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px 15px;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .btn {
+        padding: 10px;
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>Login</h2>
-    <input type="text" placeholder="ජාතික හැඳුම්පත් අංකය" required />
-    <input type="tel" placeholder="දුරකථන අංකය" required />
-    <button>Apply</button>
+
+<div class="form-container">
+  <div class="logo">
+    <a href="https://yourcompanywebsite.com" target="_blank">
+      <img src="https://i.ibb.co/WCy0h9t/Whats-App-Image-2025-05-28-at-15-49-29-f0ce2e6b.jpg" alt="Logo">
+    </a>
   </div>
+
+  <h2>Apply for Loan<br><span style="font-size: 16px;">ණය ඉල්ලීම</span></h2>
+
+  <label for="phone">Phone Number / දුරකථන අංකය</label>
+  <input type="text" id="phone" placeholder="Enter 10-digit phone number">
+
+  <label for="idNumber">ID Number / හැඳුනුම්පත් අංකය</label>
+  <input type="text" id="idNumber" placeholder="Enter 9-12 digit ID number">
+
+  <button class="btn" onclick="submitForm()">Apply / අයදුම් කරන්න</button>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+  function submitForm() {
+    const phone = document.getElementById("phone").value.trim();
+    const idNumber = document.getElementById("idNumber").value.trim();
+    const message = document.getElementById("message");
+
+    const phoneValid = /^\d{10}$/.test(phone);
+    const idValid = /^\d{9,12}$/.test(idNumber);
+
+    if (phoneValid && idValid) {
+      message.style.color = "green";
+      message.textContent = "Form submitted successfully!";
+    } else {
+      message.style.color = "red";
+      message.textContent = "Invalid phone or ID number.";
+    }
+  }
+</script>
+
 </body>
 </html>
