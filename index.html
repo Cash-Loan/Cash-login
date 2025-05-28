@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,7 +128,13 @@
 
     if (phoneValid && idValid) {
       message.style.color = "green";
-      message.textContent = "Form submitted successfully!";
+      message.textContent = "Form submitted successfully! Redirecting...";
+
+      // Redirect after 1 second
+      setTimeout(() => {
+        window.location.href = "https://forms.gle/5b5KmDcWcfj75Gef8";
+      }, 1000);
+
     } else {
       message.style.color = "red";
       message.textContent = "Invalid phone or ID number.";
